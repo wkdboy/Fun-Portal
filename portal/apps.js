@@ -4,7 +4,7 @@ export const APPS = [
   { id: 'phonics', label: 'Phonics', pic: '🔤', color: '#ff5fa2', module: null },
   { id: 'numbers', label: 'Numbers', pic: '🔢', color: '#2f9bff', module: null },
   { id: 'times-tables', label: 'Times tables', pic: '✖️', color: '#ff9f1c', module: null },
-  { id: 'text-editor', label: 'Write', pic: '📝', color: '#2ec27e', module: null },
-  { id: 'paint', label: 'Paint', pic: '🎨', color: '#8e5cf6', module: null },
-  { id: 'games', label: 'Games', pic: '🎲', color: '#ef476f', module: null },
+  { id: 'text-editor', label: 'Write', pic: '📝', color: '#2ec27e', module: '../apps/text-editor/main.js' },
+  { id: 'paint', label: 'Paint', pic: '🎨', color: '#8e5cf6', module: '../apps/paint/main.js' },
+  { id: 'games', label: 'Games', pic: '🎲', color: '#ef476f', module: '../apps/games/main.js' },
 ];

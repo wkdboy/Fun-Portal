@@ -1,5 +1,5 @@
 // Lists game players so a grown-up can delete them. (She creates players herself inside Games.)
-import { el } from '../shared/dom.js';
+import { el, add } from '../shared/dom.js';
 import { listStoredPlayers, deletePlayer } from '../shared/players.js';
 import { backButton } from './index.js';
 
@@ -7,7 +7,8 @@ export async function render(root, back) {
   const list = el('div', { class: 'card' });
   async function refresh() {
     const players = await listStoredPlayers();
-    list.replaceChildren(
+    list.replaceChildren();
+    add(list,
       players.length === 0 && el('p', { class: 'muted' }, 'No extra players yet. She can add them in Games.'),
       players.map((p) => el('div', { class: 'player-row' },
         el('span', { class: 'pic' }, p.emoji),

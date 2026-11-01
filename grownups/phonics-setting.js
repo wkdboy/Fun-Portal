@@ -1,5 +1,5 @@
 // Which sounds she has learned at school. Phonics will only practise ticked sounds.
-import { el } from '../shared/dom.js';
+import { el, add } from '../shared/dom.js';
 import { getSetting, setSetting } from '../shared/storage.js';
 import { PHONICS_GROUPS } from '../shared/phonics-sounds.js';
 import { backButton } from './index.js';
@@ -18,7 +18,7 @@ export async function render(root, back) {
     return c;
   };
 
-  root.append(
+  add(root,
     el('h1', {}, 'Phonics sounds learned'),
     el('p', {}, 'Tap a sound to switch it on (green) once she has learned it at school.'),
     PHONICS_GROUPS.map((g) => {

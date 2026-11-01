@@ -1,4 +1,4 @@
-import { el } from '../shared/dom.js';
+import { el, add } from '../shared/dom.js';
 import { getSetting } from '../shared/storage.js';
 import { APPS } from './apps.js';
 
@@ -11,7 +11,7 @@ export async function renderHome(root) {
       el('span', { class: 'pic', 'aria-hidden': 'true' }, a.pic),
       a.label));
 
-  root.append(
+  add(root,
     el('h1', { class: 'greeting' }, name ? `Hi, ${name}! ${emoji}` : `Hi! ${emoji}`),
     !name && el('div', { class: 'card setup-card' },
       el('p', {}, 'Welcome! A grown-up needs to set things up first.'),

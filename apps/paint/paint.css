@@ -1,0 +1,29 @@
+.pt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; max-width: 1300px; }
+.pt-new {
+  aspect-ratio: 4 / 3; border: 6px dashed #b7aee6; border-radius: 20px; background: #fff; color: var(--ink);
+  font: inherit; font-size: 28px; font-weight: 800; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+}
+.pt-plus { font-size: 64px; }
+.pt-card { position: relative; }
+.pt-thumb {
+  width: 100%; aspect-ratio: 4 / 3; padding: 0; border: 6px solid #fff; border-radius: 20px; overflow: hidden;
+  background: #fff; cursor: pointer; box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
+}
+.pt-thumb img { width: 100%; height: 100%; object-fit: contain; background: #fff; display: block; }
+.pt-del { position: absolute; right: -8px; bottom: -8px; min-width: 64px; min-height: 64px; padding: 0; font-size: 30px; }
+
+.pt-layout { display: flex; gap: 20px; justify-content: center; align-items: flex-start; }
+.pt-pal { display: grid; grid-template-columns: repeat(2, 64px); gap: 12px; }
+.pt-sw { width: 64px; height: 64px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 0 0 3px #cfc8ee; cursor: pointer; }
+.pt-sw.on { box-shadow: 0 0 0 7px var(--ink); }
+.pt-wrap { flex: 1; min-width: 0; height: calc(100vh - 150px); overflow: hidden; }
+.pt-canvas { display: block; background: #fff; border-radius: 16px; box-shadow: 0 6px 0 rgba(0, 0, 0, .12); touch-action: none; cursor: crosshair; }
+.pt-tools { display: grid; grid-template-columns: repeat(2, 64px); gap: 12px; }
+.pt-tool { min-width: 64px; width: 64px; height: 64px; min-height: 64px; padding: 0; font-size: 30px; background: #8d88a8; }
+.pt-tool.green { background: var(--green); }
+.pt-tool.pink { background: var(--pink); }
+.pt-tool.orange { background: var(--orange); }
+.pt-tool.sel { outline: 6px solid var(--ink); outline-offset: 2px; }
+.pt-dot { display: inline-block; border-radius: 50%; background: #fff; max-width: 52px; max-height: 52px; }
+.pt-status { margin-top: 10px; font-weight: 800; color: var(--green); min-height: 30px; }

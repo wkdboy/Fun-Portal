@@ -1,0 +1,29 @@
+[
+  {
+    "version": "0.2.0",
+    "date": "2026-11-01",
+    "notes": [
+      "Paint: free drawing that fills the screen, 12 colours, 3 brush sizes, rubber, undo and clear. Save to a gallery, reopen to keep painting, delete pictures.",
+      "Write: a simple note with big text in the Andika font, 4 text sizes and 10 colours. It saves by itself.",
+      "Games: Noughts and Crosses, Connect 4, Snakes and Ladders and Ludo, against people or computer players (levels 1 to 10), with house rules you can change before each game.",
+      "She can make her own game players (a person or a computer) in Games.",
+      "A thinking icon shows when the computer is working out its move."
+    ]
+  },
+  {
+    "version": "0.1.1",
+    "date": "2026-11-01",
+    "notes": [
+      "Fixed a stray 'false' on the home screen, and similar stray text in some grown-ups screens."
+    ]
+  },
+  {
+    "version": "0.1.0",
+    "date": "2026-11-01",
+    "notes": [
+      "First version: home screen with six app tiles (apps coming soon).",
+      "Grown-ups area behind a sum: her name and picture, phonics sounds learned, game players, backup and restore, offline check.",
+      "Works offline once opened; sound button; keyboard and gamepad navigation."
+    ]
+  }
+]

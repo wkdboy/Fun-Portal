@@ -1,6 +1,6 @@
 {
-  "version": "23eab9216d",
-  "appVersion": "0.10.0",
+  "version": "e1e83ecced",
+  "appVersion": "0.10.1",
   "files": [
     "./",
     "apps/games/ai.js",

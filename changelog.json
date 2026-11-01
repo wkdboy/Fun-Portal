@@ -1,5 +1,12 @@
 [
   {
+    "version": "0.10.1",
+    "date": "2026-11-01",
+    "notes": [
+      "Times tables: type the answer (on-screen number pad or keyboard) instead of tapping Show. A wrong answer gets one more go, then the answer is shown."
+    ]
+  },
+  {
     "version": "0.10.0",
     "date": "2026-11-01",
     "notes": [

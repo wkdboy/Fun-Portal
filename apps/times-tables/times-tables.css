@@ -5,14 +5,20 @@
 }
 .tt-tile.mix { font-size: 44px; }
 .tt-tile:active { transform: translateY(4px); }
-.tt-stage { display: flex; flex-direction: column; align-items: center; gap: 28px; margin-top: 10px; }
+.tt-stage { display: flex; gap: 40px; align-items: center; justify-content: center; margin-top: 10px; }
 .tt-card {
-  width: min(900px, 90%); min-height: 380px; padding: 20px; border: 0; border-radius: 36px; background: #fff; color: var(--ink);
-  font: inherit; cursor: pointer; box-shadow: 0 8px 0 rgba(0, 0, 0, .14);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  width: 640px; min-height: 380px; padding: 20px; border-radius: 36px; background: #fff; color: var(--ink);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, .14); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
 }
-.tt-q { font-size: 140px; font-weight: 800; line-height: 1.1; }
-.tt-a { font-size: 110px; font-weight: 800; line-height: 1.1; color: #b7aee6; }
-.tt-card.flipped .tt-a { color: var(--green); }
-.tt-btns { justify-content: center; gap: 40px; }
-.tt-btns .btn { min-width: 220px; }
+.tt-q { font-size: 120px; font-weight: 800; line-height: 1.1; }
+.tt-eq { display: flex; align-items: center; gap: 22px; font-size: 100px; font-weight: 800; line-height: 1.1; }
+.tt-box { min-width: 260px; padding: 0 22px; border-radius: 24px; border: 6px solid #b7aee6; text-align: center; color: var(--ink); }
+.tt-box.empty { color: #cfc8ee; }
+.tt-card.right .tt-box { border-color: var(--green); background: #d8f7e8; color: #1b7f4b; }
+.tt-card.wrong .tt-box { border-color: var(--pink); background: #ffe0ee; animation: tt-shake .3s; }
+.tt-card.shown .tt-box { border-color: var(--orange); background: #fff0d6; }
+@keyframes tt-shake { 25% { transform: translateX(-12px); } 75% { transform: translateX(12px); } }
+.tt-pad { display: grid; grid-template-columns: repeat(3, 100px); gap: 14px; }
+.tt-key { min-width: 0; width: 100px; height: 88px; min-height: 0; padding: 0; font-size: 44px; background: var(--blue); }
+.tt-key.grey { background: #8d88a8; }
+.tt-key.green { background: var(--green); }

@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.7.0",
+    "date": "2026-11-01",
+    "notes": [
+      "New app: Tracing. Type a letter or word (or tap one of her learned sounds) and trace it on a sheet with handwriting lines. The guides get fainter row by row and the last row is blank to write alone.",
+      "Made for a stylus: pen pressure changes the line, the pen's eraser end rubs out, and a resting hand is ignored. Mouse and finger work too. Writing can be saved to Paint's pictures."
+    ]
+  },
+  {
     "version": "0.6.2",
     "date": "2026-11-01",
     "notes": [

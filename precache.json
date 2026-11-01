@@ -1,6 +1,6 @@
 {
-  "version": "de768b3839",
-  "appVersion": "0.6.2",
+  "version": "c1ed68ccef",
+  "appVersion": "0.7.0",
   "files": [
     "./",
     "apps/games/ai.js",
@@ -47,6 +47,10 @@
     "apps/phonics/words.js",
     "apps/text-editor/editor.css",
     "apps/text-editor/main.js",
+    "apps/tracing/guides.js",
+    "apps/tracing/ink.js",
+    "apps/tracing/main.js",
+    "apps/tracing/tracing.css",
     "assets/fonts/Andika-Bold.ttf",
     "assets/fonts/Andika-Regular.ttf",
     "assets/fonts/OFL.txt",

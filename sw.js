@@ -3,7 +3,7 @@
 // the old caches; the page then reloads itself the next time she is on the home screen (see portal/main.js).
 // BUILD is rewritten by tools/gen-precache.py. It makes this file's bytes change on every release,
 // which is how the browser notices there is a new version to install.
-const BUILD = 'de768b3839';
+const BUILD = 'c1ed68ccef';
 const LIST = 'precache.json';
 const PREFIX = 'fun-portal-';
 const CACHE = PREFIX + BUILD;

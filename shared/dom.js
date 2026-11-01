@@ -20,11 +20,18 @@ export function add(parent, ...kids) {
   return parent;
 }
 
-// Loads an app's stylesheet once. Pass new URL('./x.css', import.meta.url).
-const loadedCss = new Set();
+// Loads an app's stylesheet once (pass new URL('./x.css', import.meta.url)). Returns a promise that resolves when it
+// has loaded, for code that measures the layout straight away.
+const loadedCss = new Map();
 export function loadCss(url) {
   const href = String(url);
-  if (loadedCss.has(href)) return;
-  loadedCss.add(href);
-  document.head.append(el('link', { rel: 'stylesheet', href }));
+  if (loadedCss.has(href)) return loadedCss.get(href);
+  const done = new Promise((resolve) => {
+    const link = el('link', { rel: 'stylesheet', href });
+    link.addEventListener('load', resolve);
+    link.addEventListener('error', resolve);
+    document.head.append(link);
+  });
+  loadedCss.set(href, done);
+  return done;
 }

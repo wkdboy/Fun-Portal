@@ -14,8 +14,10 @@ const goHome = () => { location.hash = '#/'; };
 
 let cleanup = null;
 let routeId = 0;
+let updatePending = false; // a new release is installed; reload when she next reaches the home screen
 
 async function route() {
+  if (updatePending && location.hash.replace(/^#\/?/, '') === '') { location.reload(); return; }
   const id = ++routeId;
   if (cleanup) { try { cleanup(); } catch (e) { console.error(e); } cleanup = null; }
   const path = location.hash.replace(/^#\/?/, '');
@@ -52,5 +54,12 @@ requestPersistence();
 route();
 
 if ('serviceWorker' in navigator) {
+  // A new release takes over by itself. Reload to pick it up, but only from the home screen so nothing is interrupted.
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController) return; // first ever install: nothing to replace
+    updatePending = true;
+    if (location.hash === '' || location.hash === '#/') location.reload();
+  });
   navigator.serviceWorker.register('sw.js').catch((e) => console.warn('Service worker failed', e));
 }

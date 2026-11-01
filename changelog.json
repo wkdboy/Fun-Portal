@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.6.1",
+    "date": "2026-11-01",
+    "notes": [
+      "Fixed: pressing refresh (F5) could bring back an old version of the app, including the stray 'false'. Old saved copies are now cleared out.",
+      "Updates now apply by themselves: the app reloads on the home screen after a new version arrives, so there is no need to close and reopen it."
+    ]
+  },
+  {
     "version": "0.6.0",
     "date": "2026-11-01",
     "notes": [

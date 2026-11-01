@@ -1,0 +1,14 @@
+.qz-dots { display: flex; gap: 10px; justify-content: center; margin-bottom: 20px; }
+.qz-dot { width: 26px; height: 26px; border-radius: 50%; background: #d9d4f0; }
+.qz-dot.now { outline: 4px solid var(--purple); outline-offset: 2px; }
+.qz-dot.ok { background: var(--green); }
+.qz-dot.try { background: var(--orange); }
+.qz-box { text-align: center; }
+.qz-q { font-size: 52px; font-weight: 800; margin: 6px 0 18px; }
+.qz-choices { display: flex; gap: 26px; justify-content: center; flex-wrap: wrap; margin-top: 26px; }
+.qz-choice { min-width: 150px; height: 120px; font-size: 60px; background: var(--blue); }
+.qz-choice.right { background: var(--green); }
+.qz-choice.wrong { background: #cfc8ee; opacity: .6; box-shadow: none; }
+.qz-result { max-width: 760px; margin: 20px auto; text-align: center; }
+.qz-result .big-stars { font-size: 110px; letter-spacing: 10px; line-height: 1.1; }
+.qz-result h1 { font-size: 56px; }

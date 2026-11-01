@@ -1,0 +1,19 @@
+.nm-menu { grid-template-columns: repeat(4, 1fr); max-width: 1300px; gap: 22px; }
+.nm-card {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 18px 10px; border: 0; border-radius: 28px;
+  background: #fff; color: var(--ink); font: inherit; cursor: pointer; box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
+}
+.nm-card:active { transform: translateY(4px); }
+.nm-pic { font-size: 64px; line-height: 1.1; }
+.nm-label { font-size: 24px; font-weight: 800; text-align: center; }
+.nm-stars { font-size: 26px; letter-spacing: 2px; }
+
+.nm-objs { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; width: 440px; margin: 0 auto; font-size: 54px; line-height: 1.1; }
+.nm-dots { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 360px; }
+.nm-dot { width: 34px; height: 34px; border-radius: 50%; display: inline-block; }
+.nm-dot.off { opacity: .2; }
+.nm-pair { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.nm-sign { font-size: 48px; font-weight: 800; }
+.nm-frame { display: grid; grid-template-columns: repeat(5, 54px); gap: 6px; justify-content: center; }
+.nm-cell { width: 54px; height: 54px; border: 3px solid #b7aee6; border-radius: 10px; background: #fff; display: flex; align-items: center; justify-content: center; }
+.nm-cell .nm-dot { width: 36px; height: 36px; }

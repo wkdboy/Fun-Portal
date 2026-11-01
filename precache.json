@@ -1,0 +1,33 @@
+{
+  "version": "7e98fbcd19",
+  "files": [
+    "./",
+    "grownups/backup-screen.js",
+    "grownups/index.js",
+    "grownups/name.js",
+    "grownups/offline.js",
+    "grownups/phonics-setting.js",
+    "grownups/players.js",
+    "icons/icon-192.png",
+    "icons/icon-512.png",
+    "icons/icon-maskable-512.png",
+    "index.html",
+    "manifest.webmanifest",
+    "portal/apps.js",
+    "portal/coming-soon.js",
+    "portal/home.js",
+    "portal/main.js",
+    "portal/portal.css",
+    "shared/audio.js",
+    "shared/backup.js",
+    "shared/dom.js",
+    "shared/emojis.js",
+    "shared/input.js",
+    "shared/parent-gate.js",
+    "shared/phonics-sounds.js",
+    "shared/players.js",
+    "shared/storage.js",
+    "shared/ui.css",
+    "precache.json"
+  ]
+}

@@ -8,7 +8,6 @@ import { createInk } from './ink.js';
 
 const COLOURS = ['#6c4cf1', '#e63946', '#2f6bff', '#1b7f4b', '#2b2250'];
 const SIZES = [5, 10];
-const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 export async function mount(root) {
   await Promise.all([
@@ -16,17 +15,11 @@ export async function mount(root) {
     loadCss(new URL('./tracing.css', import.meta.url)),
   ]);
   const name = await getSetting('childName');
-  const learned = await getSetting('phonicsLearned');
   let text = (await get('kv', 'tracingText')) ?? (name || 'abc');
   let timer = null;
 
   const input = el('input', { type: 'text', class: 'tr-input', maxlength: '14', placeholder: 'Type here', autocomplete: 'off', spellcheck: 'false', 'aria-label': 'Letters or word to trace' });
   input.value = text;
-  const chips = el('div', { class: 'tr-chips' }, (learned.length >= 4 ? learned : ALPHABET).map((s) => el('button', {
-    class: 'chip tr-chip',
-    onclick: () => { input.value = s; changed(); },
-  }, s)));
-
   const stage = el('div', { class: 'tr-stage' });
   const guide = el('canvas', { class: 'tr-guide' });
   const inkCanvas = el('canvas', { class: 'tr-ink' });
@@ -75,7 +68,7 @@ export async function mount(root) {
       status.textContent = 'Saved in Paint ✔';
     }, 'green'));
 
-  add(root, el('div', { class: 'tr-top' }, input, chips),
+  add(root, el('div', { class: 'tr-top' }, input),
     el('div', { class: 'pt-layout' }, el('div', { class: 'pt-pal' }, swatches), el('div', { class: 'tr-wrapper' }, stage), el('div', {}, tools, status)));
 
   // Size the sheet to the space available (3 rows on a short screen).

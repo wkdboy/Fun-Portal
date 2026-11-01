@@ -1,6 +1,6 @@
 {
-  "version": "c1ed68ccef",
-  "appVersion": "0.7.0",
+  "version": "892f67bb73",
+  "appVersion": "0.8.0",
   "files": [
     "./",
     "apps/games/ai.js",
@@ -35,9 +35,11 @@
     "apps/numbers/main.js",
     "apps/numbers/numbers.css",
     "apps/paint/colouring.js",
+    "apps/paint/draw-kit.js",
     "apps/paint/editor.js",
     "apps/paint/gallery.js",
     "apps/paint/main.js",
+    "apps/paint/pages-more.js",
     "apps/paint/pages.js",
     "apps/paint/paint.css",
     "apps/phonics/activities.js",

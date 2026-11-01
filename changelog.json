@@ -1,5 +1,19 @@
 [
   {
+    "version": "0.8.0",
+    "date": "2026-11-01",
+    "notes": [
+      "Colouring in: 20 more pictures (penguin, frog, duck, pig, rabbit, sheep, lion, elephant, dinosaur, train, aeroplane, hot air balloon, lighthouse, windmill, camping, cupcake, snowman, Christmas tree, pumpkin, umbrella). 42 in all."
+    ]
+  },
+  {
+    "version": "0.7.1",
+    "date": "2026-11-01",
+    "notes": [
+      "Tracing: removed the row of phonics sounds; just type a letter or word."
+    ]
+  },
+  {
     "version": "0.7.0",
     "date": "2026-11-01",
     "notes": [

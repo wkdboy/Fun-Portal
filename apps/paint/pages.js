@@ -1,28 +1,8 @@
 // Colouring-in pictures, drawn in code (original line art, 120 x 90 grid). Shapes are filled white so later shapes
 // hide earlier lines; the editor turns the dark lines into the outline layer and the white into "colour here".
 // Style: chunky lines, big round shapes, friendly faces, and a simple scene behind each picture.
-const K = '#2b2250';
-const svg = (inner) => `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 120 90"><rect width="120" height="90" fill="#fff"/><g fill="#fff" stroke="${K}" stroke-width="0.95" stroke-linejoin="round" stroke-linecap="round">${inner}</g></svg>`;
-const circ = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}"/>`;
-const ell = (cx, cy, rx, ry, rot = 0) => `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"${rot ? ` transform="rotate(${rot} ${cx} ${cy})"` : ''}/>`;
-const dot = (cx, cy, r) => `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${K}"/>`;
-const open = (d) => `<path d="${d}" fill="none"/>`;
-const eye = (x, y, r = 4.5) => `${circ(x, y, r)}${dot(x + r * 0.15, y + r * 0.2, r * 0.5)}`;
-const blush = (x, y) => ell(x, y, 3.6, 2.4);
-const star = (cx, cy, r) => `<polygon points="${Array.from({ length: 10 }, (_, i) => {
-  const a = -Math.PI / 2 + (i * Math.PI) / 5;
-  const rr = i % 2 ? r * 0.45 : r;
-  return `${(cx + rr * Math.cos(a)).toFixed(1)},${(cy + rr * Math.sin(a)).toFixed(1)}`;
-}).join(' ')}"/>`;
-const heart = (x, y, s) => `<path d="M${x} ${y + s} C${x - s * 1.6} ${y} ${x - s * 1.2} ${y - s * 1.1} ${x} ${y - s * 0.3} C${x + s * 1.2} ${y - s * 1.1} ${x + s * 1.6} ${y} ${x} ${y + s}Z"/>`;
-const cloud = (x, y) => `<path transform="translate(${x} ${y})" d="M0 8 Q-8 8 -6 1 Q-4 -5 3 -4 Q5 -12 14 -11 Q22 -11 23 -3 Q31 -3 30 3 Q30 8 24 8Z"/>`;
-const grass = (y = 82) => `<path d="M0 ${y} Q8 ${y - 5} 16 ${y} T32 ${y} T48 ${y} T64 ${y} T80 ${y} T96 ${y} T112 ${y} T128 ${y} V90 H0Z"/>`;
-const sun = (x, y, r) => `${Array.from({ length: 8 }, (_, i) => {
-  const a = (i * Math.PI) / 4;
-  return `<path d="M${(x + (r + 2) * Math.cos(a)).toFixed(1)} ${(y + (r + 2) * Math.sin(a)).toFixed(1)} L${(x + (r + 5.5) * Math.cos(a)).toFixed(1)} ${(y + (r + 5.5) * Math.sin(a)).toFixed(1)}" fill="none"/>`;
-}).join('')}${circ(x, y, r)}`;
-const bird = (x, y) => `<path transform="translate(${x} ${y})" d="M0 0 Q3 -4 6 0 Q9 -4 12 0" fill="none"/>`;
-const flower = (x, y) => `${Array.from({ length: 5 }, (_, i) => circ((x + 3.3 * Math.cos((i * 2 * Math.PI) / 5 - 1.57)).toFixed(1), (y + 3.3 * Math.sin((i * 2 * Math.PI) / 5 - 1.57)).toFixed(1), 2.4)).join('')}${circ(x, y, 2)}`;
+import { K, svg, circ, ell, dot, open, eye, blush, star, heart, cloud, grass, sun, bird, flower, clip } from './draw-kit.js';
+import { MORE } from './pages-more.js';
 
 const cat = `${grass(82)}<path d="M82 84 Q106 80 102 56 Q100 48 94 54 Q96 68 80 72Z"/><path d="M34 86 Q32 62 48 60 L72 60 Q88 62 86 86Z"/><ellipse cx="46" cy="85" rx="8" ry="4"/><ellipse cx="74" cy="85" rx="8" ry="4"/>
 <path d="M60 63 L50 57 V69Z"/><path d="M60 63 L70 57 V69Z"/>${circ(60, 63, 2.6)}
@@ -117,8 +97,6 @@ const bear = `${heart(100, 20, 6)}${heart(18, 28, 4)}${cloud(4, 12)}${grass(86)}
 <ellipse cx="60" cy="46" rx="11" ry="8.5"/><ellipse cx="60" cy="42" rx="4.5" ry="3.2" fill="${K}"/>${open('M60 45 V49 M54 50 Q60 55 66 50')}${eye(49, 34, 4.5)}${eye(71, 34, 4.5)}${blush(42, 44)}${blush(78, 44)}
 <path d="M60 60 L50 55 V65Z"/><path d="M60 60 L70 55 V65Z"/>${circ(60, 60, 2.6)}${circ(96, 40, 8)}${open('M96 48 Q92 62 84 66')}`;
 
-// Lines that must meet an outline exactly (so the paint-bucket cannot leak) are clipped to that shape.
-const clip = (id, shape, lines) => `<clipPath id="${id}">${shape.replace('<', '<')}</clipPath><g clip-path="url(#${id})">${lines}</g>`;
 
 const bee = `${cloud(2, 12)}${sun(106, 14, 6)}${grass(86)}${open('M20 86 V72')}${flower(20, 70)}${open('M104 86 V68')}${flower(104, 66)}${open('M10 86 V78')}${flower(10, 76)}
 <ellipse cx="38" cy="30" rx="12" ry="19" transform="rotate(-25 38 30)"/><ellipse cx="62" cy="28" rx="12" ry="19" transform="rotate(20 62 28)"/>
@@ -152,5 +130,6 @@ export const PAGES = [
   { id: 'bear', name: 'Teddy', svg: svg(bear) },
   { id: 'bee', name: 'Bee', svg: svg(bee) },
   { id: 'ladybird', name: 'Ladybird', svg: svg(ladybird) },
+  ...MORE,
 ];
 export const pageById = (id) => PAGES.find((p) => p.id === id);

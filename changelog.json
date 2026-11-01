@@ -1,5 +1,12 @@
 [
   {
+    "version": "0.9.0",
+    "date": "2026-11-01",
+    "notes": [
+      "Paint by numbers: pick any colouring picture, then colour each numbered area with the matching numbered colour. Tiny areas are coloured in for her, and a tick-fade shows when a number is finished."
+    ]
+  },
+  {
     "version": "0.8.0",
     "date": "2026-11-01",
     "notes": [

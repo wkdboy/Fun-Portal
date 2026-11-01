@@ -14,8 +14,9 @@ export function mount(root) {
   };
   const nav = {
     gallery: () => show((r) => renderGallery(r, nav)),
-    edit: (id, page) => show((r) => renderEditor(r, nav, id, page)),
+    edit: (id, page, byNumbers) => show((r) => renderEditor(r, nav, id, page, byNumbers)),
     colouring: () => show((r) => renderColouring(r, nav)),
+    numbers: () => show((r) => renderColouring(r, nav, true)),
   };
   nav.gallery();
   return () => stop?.();

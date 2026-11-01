@@ -5,6 +5,7 @@ import { get, put } from '../../shared/storage.js';
 import { confirmPicture } from '../../shared/confirm.js';
 import { play } from '../../shared/audio.js';
 import { pageById } from './pages.js';
+import { NUM_COLOURS, analyse, drawNumbers } from './numbers.js';
 
 const MAX_UNDO = 10;
 const COLOURS = ['#2b2250', '#8d88a8', '#e63946', '#ff9f1c', '#ffd23f', '#2ec27e', '#1b7f4b', '#6fd3ff', '#2f6bff', '#8e5cf6', '#ff5fa2', '#8b5a2b', '#ffffff', '#f5c9a0'];
@@ -15,13 +16,15 @@ const PAGE_H = 900;
 const toBlob = (canvas) => new Promise((r) => canvas.toBlob(r, 'image/png'));
 const hexRgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
 
-export async function renderEditor(root, nav, id, pageId) {
+export async function renderEditor(root, nav, id, pageId, byNumbers = false) {
   const rec = id ? await get('drawings', id) : null;
   pageId = pageId || rec?.page || null;
+  const numbers = !!(pageId && (byNumbers || rec?.numbers)); // paint by numbers: fill each area with its numbered colour
   const page = pageId ? pageById(pageId) : null;
 
   let picId = id;
-  let colour = COLOURS[2];
+  const PAL = numbers ? NUM_COLOURS : COLOURS;
+  let colour = numbers ? PAL[0] : COLOURS[2];
   let size = SIZES[1];
   let erasing = false;
   let filling = !!page;
@@ -31,27 +34,35 @@ export async function renderEditor(root, nav, id, pageId) {
 
   const status = el('div', { class: 'pt-status' });
   const wrap = el('div', { class: 'pt-wrap' });
-  const swatches = COLOURS.map((c) => el('button', {
+  let chosen = 1; // chosen number (paint by numbers)
+  let regionData = null; // { labels, regions }
+  const done = new Set();
+  let numCanvas = null;
+  const swatches = PAL.map((c, i) => el('button', {
     class: 'pt-sw',
     style: `background:${c}`,
-    'aria-label': 'Colour',
-    onclick: () => { colour = c; erasing = false; refresh(); },
-  }));
+    'aria-label': numbers ? 'Number ' + (i + 1) : 'Colour',
+    onclick: () => { colour = c; erasing = false; chosen = i + 1; refresh(); },
+  }, numbers ? String(i + 1) : null));
   const sizeBtns = SIZES.map((s) => el('button', {
     class: 'btn pt-tool',
     'aria-label': 'Brush size',
     onclick: () => { size = s; filling = false; refresh(); },
   }, el('span', { class: 'pt-dot', style: `width:${s * 0.9 + 6}px;height:${s * 0.9 + 6}px` })));
   const rubber = el('button', { class: 'btn pt-tool', 'aria-label': 'Rubber', onclick: () => { erasing = !erasing; if (erasing) filling = false; refresh(); } }, '🧽');
-  const bucket = page && el('button', { class: 'btn pt-tool', 'aria-label': 'Fill an area', onclick: () => { filling = true; erasing = false; refresh(); } }, '🪣');
+  const bucket = page && !numbers && el('button', { class: 'btn pt-tool', 'aria-label': 'Fill an area', onclick: () => { filling = true; erasing = false; refresh(); } }, '🪣');
   const tool = (label, aria, fn, cls = '') => el('button', { class: 'btn pt-tool ' + cls, 'aria-label': aria, onclick: fn }, label);
 
   let cursor; // ring that shows where (and how big) the brush is, visible on any colour
   function refresh() {
-    swatches.forEach((b, i) => b.classList.toggle('on', !erasing && COLOURS[i] === colour));
+    swatches.forEach((b, i) => b.classList.toggle('on', !erasing && PAL[i] === colour));
+    if (numbers && regionData) {
+      swatches.forEach((b, i) => b.classList.toggle('fin', !regionData.regions.some((r) => r.num === i + 1 && !r.auto && !done.has(r.id))));
+      drawNumbers(numCanvas.getContext('2d'), regionData.regions, done, chosen);
+    }
     sizeBtns.forEach((b, i) => b.classList.toggle('sel', !filling && SIZES[i] === size));
     rubber.classList.toggle('sel', erasing);
-    bucket?.classList.toggle('sel', filling);
+    if (bucket) bucket.classList.toggle('sel', filling);
     if (cursor) {
       const d = filling ? 28 : Math.max(16, erasing ? size * 1.6 : size);
       cursor.style.width = cursor.style.height = d + 'px';
@@ -68,11 +79,11 @@ export async function renderEditor(root, nav, id, pageId) {
 
   const tools = el('div', { class: 'pt-tools' },
     bucket,
-    sizeBtns,
-    rubber,
+    numbers ? null : sizeBtns,
+    numbers ? null : rubber,
     tool('↩️', 'Undo', () => {
       const s = undoStack.pop();
-      if (s) { ctx.putImageData(s, 0, 0); dirty = true; }
+      if (s) { ctx.putImageData(s, 0, 0); dirty = true; if (numbers) syncDone(); }
     }),
     tool('🗑️', 'Clear picture', async () => {
       if (await confirmPicture('🗑️', page ? 'Rub out all the colour?' : 'Clear the picture?')) {
@@ -80,6 +91,7 @@ export async function renderEditor(root, nav, id, pageId) {
         ctx.fillStyle = '#fff';
         ctx.fillRect(0, 0, W, H);
         dirty = true;
+        if (numbers) { autoFill(); syncDone(); }
       }
     }, 'pink'),
     tool('💾', 'Save', async () => { await save(); play('good'); status.textContent = 'Saved ✔'; }, 'green'),
@@ -127,6 +139,13 @@ export async function renderEditor(root, nav, id, pageId) {
     outline.canvas.style.height = cssH + 'px';
     stack.append(outline.canvas);
     if (rec?.layer) ctx.drawImage(await createImageBitmap(rec.layer), 0, 0, W, H);
+    if (numbers) {
+      regionData = analyse(outline.alpha, W, H);
+      numCanvas = el('canvas', { class: 'pt-outline', width: W, height: H, style: `width:${cssW}px;height:${cssH}px` });
+      stack.append(numCanvas);
+      if (!rec?.layer) autoFill();
+      syncDone();
+    }
   } else if (rec) {
     // Saved pictures may have a different shape: fit them inside, keeping their proportions.
     const bmp = await createImageBitmap(rec.png);
@@ -166,6 +185,67 @@ export async function renderEditor(root, nav, id, pageId) {
     }
     x.putImageData(data, 0, 0);
     return { canvas: c, alpha };
+  }
+
+  // Paint by numbers helpers. Tiny areas, where a number would not fit, are coloured in for her.
+  function paintRegion(r, col) {
+    const img = ctx.getImageData(r.minX, r.minY, r.maxX - r.minX + 1, r.maxY - r.minY + 1);
+    const w = img.width;
+    const [cr, cg, cb] = hexRgb(col);
+    const labels = regionData.labels;
+    for (let y = r.minY; y <= r.maxY; y++) {
+      for (let x = r.minX; x <= r.maxX; x++) {
+        if (labels[y * W + x] !== r.id) continue;
+        const p = ((y - r.minY) * w + (x - r.minX)) * 4;
+        img.data[p] = cr; img.data[p + 1] = cg; img.data[p + 2] = cb; img.data[p + 3] = 255;
+      }
+    }
+    ctx.putImageData(img, r.minX, r.minY);
+  }
+  function autoFill() {
+    for (const r of regionData.regions) if (r.auto) paintRegion(r, NUM_COLOURS[r.num - 1]);
+  }
+  function syncDone() { // work out which areas are coloured, from the picture itself
+    const px = ctx.getImageData(0, 0, W, H).data;
+    done.clear();
+    for (const r of regionData.regions) {
+      const p = (r.y * W + r.x) * 4;
+      if (px[p] + px[p + 1] + px[p + 2] < 750) done.add(r.id);
+    }
+    refresh();
+    finishCheck();
+  }
+  function finishCheck() {
+    if (regionData.regions.every((r) => r.auto || done.has(r.id))) status.textContent = 'Well done! 🎉';
+  }
+  function numberTap(fx, fy) {
+    const x0 = Math.round(fx);
+    const y0 = Math.round(fy);
+    const { labels, regions } = regionData;
+    let id = 0;
+    for (let r = 0; r <= 8 && !id; r++) {
+      for (let dy = -r; dy <= r && !id; dy++) {
+        for (let dx = -r; dx <= r; dx++) {
+          const x = x0 + dx;
+          const y = y0 + dy;
+          if (x >= 0 && y >= 0 && x < W && y < H && labels[y * W + x]) { id = labels[y * W + x]; break; }
+        }
+      }
+    }
+    const r = regions[id - 1];
+    if (!r || r.auto || done.has(r.id)) return;
+    if (r.num !== chosen) { play('wrong'); chosen = r.num; colour = NUM_COLOURS[chosen - 1]; refresh(); return; }
+    snapshot();
+    paintRegion(r, colour);
+    done.add(r.id);
+    dirty = true;
+    play('pop');
+    if (!regions.some((q) => q.num === chosen && !q.auto && !done.has(q.id))) { // that number is finished: move on
+      const next = regions.find((q) => !q.auto && !done.has(q.id));
+      if (next) { chosen = next.num; colour = NUM_COLOURS[chosen - 1]; }
+    }
+    refresh();
+    if (regions.every((q) => q.auto || done.has(q.id))) { play('win'); finishCheck(); }
   }
 
   // Fill the whole area around (fx, fy), stopping at the outline.
@@ -238,6 +318,7 @@ export async function renderEditor(root, nav, id, pageId) {
     if (e.button > 0 || !e.isPrimary) return;
     e.preventDefault();
     status.textContent = '';
+    if (numbers) { numberTap(...pos(e)); return; }
     if (filling && page) {
       snapshot();
       if (floodFill(...pos(e))) { dirty = true; play('pop'); } else undoStack.pop();
@@ -277,7 +358,8 @@ export async function renderEditor(root, nav, id, pageId) {
       const o = out.getContext('2d');
       o.drawImage(canvas, 0, 0);
       o.drawImage(outline.canvas, 0, 0);
-      await put('drawings', { id: picId, png: await toBlob(out), layer: await toBlob(canvas), page: pageId, modified: Date.now() });
+      if (numCanvas) o.drawImage(numCanvas, 0, 0);
+      await put('drawings', { id: picId, png: await toBlob(out), layer: await toBlob(canvas), page: pageId, numbers, modified: Date.now() });
     }
     dirty = false;
   }

@@ -5,6 +5,8 @@ import { runQuiz } from '../../shared/quiz.js';
 import { play } from '../../shared/audio.js';
 import { usableWords } from './words.js';
 import { ACTIVITIES } from './activities.js';
+import { picture } from '../../shared/art.js';
+import { TILES } from '../../shared/art-tiles.js';
 
 const ROUND = 8;
 
@@ -28,7 +30,7 @@ export function mount(root) {
       return;
     }
     add(r, el('div', { class: 'grid ph-menu' }, ACTIVITIES.map((a) => el('button', { class: 'tile', style: 'background:#ff5fa2', onclick: () => nav.play(a) },
-      el('span', { class: 'pic' }, a.pic), a.label))));
+      el('span', { class: 'pic' }, picture(TILES, a.id, a.pic)), a.label))));
     r.querySelector('.tile')?.focus();
   }
 

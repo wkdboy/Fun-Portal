@@ -1,5 +1,22 @@
 [
   {
+    "version": "0.4.1",
+    "date": "2026-11-01",
+    "notes": [
+      "The grown-ups button moved to the top right, next to the sound button.",
+      "New button at the top of the home screen: hover over it (or tap it) to see whether all the files are saved for offline use."
+    ]
+  },
+  {
+    "version": "0.4.0",
+    "date": "2026-11-01",
+    "notes": [
+      "Drawn pictures: the home tiles, the games, the phonics menu and all 71 phonics words now have drawn pictures instead of emoji.",
+      "Games remember an unfinished game. Open the game and tap Carry on, or throw it away.",
+      "Home tiles now fit on shorter screens."
+    ]
+  },
+  {
     "version": "0.3.2",
     "date": "2026-11-01",
     "notes": [

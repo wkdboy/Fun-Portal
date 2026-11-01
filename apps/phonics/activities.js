@@ -4,8 +4,9 @@ import { pick, shuffle, sample } from '../../shared/random.js';
 import { choiceRow } from '../../shared/quiz.js';
 import { play } from '../../shared/audio.js';
 import { WORDS } from './words.js';
+import { wordPic } from './pictures.js';
 
-const wordBox = (word) => el('div', { class: 'ph-card' }, el('div', { class: 'ph-pic' }, word.pic), el('div', { class: 'ph-word' }, word.w));
+const wordBox = (word) => el('div', { class: 'ph-card' }, el('div', { class: 'ph-pic' }, wordPic(word)), el('div', { class: 'ph-word' }, word.w));
 
 function firstSound(ctx) {
   const word = pick(ctx.words);
@@ -52,7 +53,7 @@ function buildWord(ctx) {
         }, g);
         return t;
       });
-      add(box, el('div', { class: 'qz-q' }, 'Build the word'), el('div', { class: 'ph-card' }, el('div', { class: 'ph-pic' }, word.pic)),
+      add(box, el('div', { class: 'qz-q' }, 'Build the word'), el('div', { class: 'ph-card' }, el('div', { class: 'ph-pic' }, wordPic(word))),
         el('div', { class: 'ph-slots' }, slots), el('div', { class: 'qz-choices' }, tiles));
       box.querySelector('.ph-tile')?.focus();
     },
@@ -62,7 +63,7 @@ function buildWord(ctx) {
 function readAndMatch(ctx) {
   const word = pick(ctx.words);
   const others = sample(WORDS.filter((x) => x.pic !== word.pic), 2);
-  const options = shuffle([word, ...others]).map((x) => ({ label: x.pic, value: x.w }));
+  const options = shuffle([word, ...others]).map((x) => ({ label: wordPic(x), value: x.w }));
   return {
     key: word.w,
     render(box, done) {

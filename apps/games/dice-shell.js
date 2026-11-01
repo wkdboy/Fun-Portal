@@ -6,13 +6,14 @@ import { el, add } from '../../shared/dom.js';
 import { play as sfx } from '../../shared/audio.js';
 import { chooseMove } from './ai.js';
 import { showThinking } from './think.js';
+import { writeSave, clearSave } from './save.js';
 
 const FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
 
-export function runDiceGame(root, nav, def, game, players, rules) {
+export function runDiceGame(root, nav, def, game, players, rules, saved) {
   const n = players.length;
   const colours = game.seatColours(n);
-  let starter = 0;
+  let starter = saved?.starter ?? 0;
   let state;
   let over = false;
   let rolling = false;
@@ -65,6 +66,7 @@ export function runDiceGame(root, nav, def, game, players, rules) {
     paint();
     const r = game.result(state);
     if (r) return finish(r);
+    writeSave(def.id, { playerIds: players.map((p) => p.id), rules, state, starter });
     const p = players[state.turn];
     const human = p.type === 'human';
     const waiting = { interactive: false };
@@ -134,6 +136,7 @@ export function runDiceGame(root, nav, def, game, players, rules) {
 
   function finish(r) {
     over = true;
+    clearSave(def.id);
     dice.disabled = true;
     paint();
     board.update(state, { interactive: false, result: r });
@@ -143,6 +146,6 @@ export function runDiceGame(root, nav, def, game, players, rules) {
     again.focus();
   }
 
-  newGame();
+  if (saved) { state = saved.state; step(); } else newGame();
   return clearTimers;
 }

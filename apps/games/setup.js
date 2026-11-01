@@ -1,6 +1,7 @@
 // Before a game: choose how many players (if the game allows), who they are, and the house rules.
 import { el, add } from '../../shared/dom.js';
 import { listGamePlayers } from '../../shared/players.js';
+import { loadSave, clearSave } from './save.js';
 
 export async function renderSetup(root, nav, def) {
   const { game } = await def.load();
@@ -8,6 +9,18 @@ export async function renderSetup(root, nav, def) {
   const others = players.filter((p) => p.id !== 'me');
 
   add(root, el('h1', {}, `${def.pic} ${def.label}`));
+
+  const save = await loadSave(def.id);
+  const savedPlayers = save?.playerIds.map((id) => players.find((p) => p.id === id));
+  if (save && savedPlayers.every(Boolean)) {
+    add(root, el('div', { class: 'card', style: 'max-width:760px;margin:0 auto 24px;text-align:center' },
+      el('p', {}, `A game is waiting: ${savedPlayers.map((p) => p.emoji + ' ' + p.name).join(' and ')}`),
+      el('div', { class: 'row', style: 'justify-content:center' },
+        el('button', { class: 'btn big green', onclick: () => nav.play(def, game, savedPlayers, save.rules, save) }, '▶ Carry on'),
+        el('button', { class: 'btn big grey', onclick: async () => { await clearSave(def.id); nav.setup(def); } }, '🗑️ Throw it away'))));
+  } else if (save) {
+    await clearSave(def.id); // a player in it no longer exists
+  }
 
   if (others.length === 0) {
     add(root, el('div', { class: 'card center', style: 'max-width:700px;margin:0 auto' },

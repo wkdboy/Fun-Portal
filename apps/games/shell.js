@@ -5,13 +5,14 @@ import { el, add } from '../../shared/dom.js';
 import { play as sfx } from '../../shared/audio.js';
 import { chooseMove } from './ai.js';
 import { showThinking } from './think.js';
+import { writeSave, clearSave } from './save.js';
 
-export function runGame(root, nav, def, game, players, rules) {
-  let starter = 0;
+export function runGame(root, nav, def, game, players, rules, saved) {
+  let starter = saved?.starter ?? 0;
   let state;
   let over = false;
   let timer = null;
-  let loser = null;
+  let loser = saved?.loser ?? null;
 
   const bar = el('div', { class: 'g-bar' });
   const msg = el('div', { class: 'g-msg' });
@@ -52,6 +53,7 @@ export function runGame(root, nav, def, game, players, rules) {
     drawBar();
     const r = game.result(state);
     if (r) return finish(r);
+    writeSave(def.id, { playerIds: players.map((p) => p.id), rules, state, starter, loser });
     const p = players[state.turn];
     const human = p.type === 'human';
     board.update(state, { interactive: human });
@@ -76,6 +78,7 @@ export function runGame(root, nav, def, game, players, rules) {
 
   function finish(r) {
     over = true;
+    clearSave(def.id);
     loser = r.winner === -1 ? null : 1 - r.winner;
     drawBar();
     board.update(state, { interactive: false, result: r });
@@ -85,6 +88,6 @@ export function runGame(root, nav, def, game, players, rules) {
     again.focus();
   }
 
-  newGame();
+  if (saved) { state = saved.state; step(); } else newGame();
   return () => clearTimeout(timer);
 }

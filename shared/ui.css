@@ -72,3 +72,6 @@ input[type="text"] {
 .shake { animation: shake .4s; }
 @keyframes shake { 25% { transform: translateX(-14px); } 75% { transform: translateX(14px); } }
 @media (prefers-reduced-motion: reduce) { .shake { animation: none; } }
+
+.art { display: inline-block; width: 1em; height: 1em; line-height: 0; vertical-align: middle; }
+.art svg { display: block; }

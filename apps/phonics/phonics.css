@@ -7,9 +7,10 @@
 .ph-pic { font-size: 120px; line-height: 1.1; }
 .ph-word { font-family: "Andika", "Segoe UI", sans-serif; font-size: 52px; font-weight: 700; }
 .ph-word.big { font-size: 96px; padding: 20px 20px; }
-.ph-choice { font-family: "Andika", "Segoe UI", sans-serif; background: var(--pink); }
-.ph-pics { background: #fff; font-size: 80px; min-width: 170px; height: 150px; box-shadow: 0 6px 0 rgba(0, 0, 0, .12); }
-.ph-pics.right { background: #b8f2d2; }
+.qz-choice.ph-choice { font-family: "Andika", "Segoe UI", sans-serif; background: var(--pink); }
+.qz-choice.ph-pics { background: #fff; font-size: 150px; min-width: 200px; height: 190px; padding: 6px; box-shadow: 0 6px 0 rgba(0, 0, 0, .12); }
+.qz-choice.ph-pics.right { background: #b8f2d2; }
+.qz-choice.ph-pics.wrong { background: #eee; }
 .ph-slots { display: flex; gap: 14px; justify-content: center; margin: 18px 0 6px; }
 .ph-slot {
   min-width: 100px; height: 100px; border-radius: 20px; border: 5px dashed #b7aee6; background: #fff;

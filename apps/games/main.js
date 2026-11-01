@@ -21,7 +21,7 @@ export function mount(root) {
     hub: () => show((r) => renderHub(r, nav)),
     players: (back) => show((r) => renderPlayers(r, back)),
     setup: (def) => show((r) => renderSetup(r, nav, def)),
-    play: (def, game, players, rules) => show((r) => (def.shell === 'dice' ? runDiceGame : runGame)(r, nav, def, game, players, rules)),
+    play: (def, game, players, rules, saved) => show((r) => (def.shell === 'dice' ? runDiceGame : runGame)(r, nav, def, game, players, rules, saved)),
   };
   nav.hub();
   return () => { alive = false; stop?.(); };

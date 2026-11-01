@@ -1,6 +1,6 @@
 {
-  "version": "0dda5703c9",
-  "appVersion": "0.4.1",
+  "version": "4121f83b92",
+  "appVersion": "0.5.0",
   "files": [
     "./",
     "apps/games/ai.js",
@@ -24,6 +24,9 @@
     "apps/games/save.js",
     "apps/games/setup.js",
     "apps/games/shell.js",
+    "apps/games/shopping/items.js",
+    "apps/games/shopping/main.js",
+    "apps/games/shopping/shopping.css",
     "apps/games/snakes/board.js",
     "apps/games/snakes/engine.js",
     "apps/games/snakes/game.js",

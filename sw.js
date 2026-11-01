@@ -3,7 +3,7 @@
 // so an update never changes the app mid-session.
 // BUILD is rewritten by tools/gen-precache.py. It makes this file's bytes change on every release,
 // which is how the browser notices there is a new version to install.
-const BUILD = '0dda5703c9';
+const BUILD = '4121f83b92';
 const LIST = 'precache.json';
 const PREFIX = 'fun-portal-';
 

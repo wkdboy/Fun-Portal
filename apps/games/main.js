@@ -20,6 +20,7 @@ export function mount(root) {
     memory: {}, // remembers player/rule choices per game while the app is open
     hub: () => show((r) => renderHub(r, nav)),
     players: (back) => show((r) => renderPlayers(r, back)),
+    solo: (def) => show(async (r) => (await def.solo()).run(r, nav)),
     setup: (def) => show((r) => renderSetup(r, nav, def)),
     play: (def, game, players, rules, saved) => show((r) => (def.shell === 'dice' ? runDiceGame : runGame)(r, nav, def, game, players, rules, saved)),
   };

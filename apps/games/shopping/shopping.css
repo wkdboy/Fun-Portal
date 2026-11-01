@@ -1,0 +1,29 @@
+.sh-levels { grid-template-columns: repeat(3, 1fr); max-width: 1000px; margin: 0 auto; }
+.sh-wrap { display: flex; gap: 24px; justify-content: center; align-items: flex-start; }
+.sh-list { width: 290px; }
+.sh-list h2, .sh-basket h2 { margin: 0 0 10px; font-size: 28px; }
+.sh-row, .sh-brow { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 14px; border: 3px solid transparent; }
+.sh-row .sh-pic, .sh-brow .sh-pic { font-size: 56px; flex: none; }
+.sh-rname { flex: 1; font-size: 26px; font-weight: 700; }
+.sh-qty { font-size: 28px; font-weight: 800; color: var(--orange); white-space: nowrap; }
+.sh-mark { font-size: 30px; width: 36px; text-align: center; }
+.sh-row.ok { background: #e3f9ee; border-color: var(--green); }
+.sh-row.bad, .sh-brow.bad { background: #ffe4e6; border-color: var(--pink); }
+.sh-brow { width: 100%; background: #f6f3ff; font: inherit; cursor: pointer; margin-bottom: 6px; }
+.sh-brow .sh-qty { flex: 1; text-align: left; }
+.sh-x { font-size: 24px; opacity: .6; }
+.sh-shelf { display: grid; grid-template-columns: repeat(4, 150px); gap: 12px; }
+.sh-item {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; height: min(165px, 20vh);
+  border: 0; border-radius: 20px; background: #fff; font: inherit; cursor: pointer; box-shadow: 0 6px 0 rgba(0, 0, 0, .12); color: var(--ink);
+}
+.sh-item:active { transform: translateY(4px); }
+.sh-item .art { font-size: min(90px, 10.5vh); }
+.sh-name { font-size: 20px; font-weight: 700; }
+.sh-price { font-size: 22px; font-weight: 800; color: #fff; background: var(--orange); border-radius: 12px; padding: 0 10px; }
+.sh-msg { min-height: 56px; margin-top: 14px; font-size: 22px; font-weight: 700; text-align: center; color: var(--pink); }
+.sh-side { width: 290px; display: flex; flex-direction: column; gap: 12px; }
+.sh-basket { min-height: 200px; }
+.sh-receipt { display: flex; gap: 22px; justify-content: center; margin: 10px 0 6px; font-size: 40px; font-weight: 800; }
+.sh-rrow { display: flex; align-items: center; gap: 10px; background: #fff; border-radius: 18px; padding: 8px 18px; }
+.sh-rrow .art { font-size: 70px; }

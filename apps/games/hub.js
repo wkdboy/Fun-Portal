@@ -6,8 +6,8 @@ import { TILES } from '../../shared/art-tiles.js';
 
 export async function renderHub(root, nav) {
   const saved = await savedIds();
-  const tiles = GAMES.map((g) => g.load
-    ? el('button', { class: 'tile', style: `background:${g.color}`, onclick: () => nav.setup(g) },
+  const tiles = GAMES.map((g) => g.load || g.solo
+    ? el('button', { class: 'tile', style: `background:${g.color}`, onclick: () => (g.solo ? nav.solo(g) : nav.setup(g)) },
       el('span', { class: 'pic' }, picture(TILES, g.id, g.pic)), g.label, saved.has(g.id) && el('small', {}, '▶ Game waiting'))
     : el('div', { class: 'tile g-soon', style: `background:${g.color}` },
       el('span', { class: 'pic' }, picture(TILES, g.id, g.pic)), g.label, el('small', {}, 'Coming soon')));

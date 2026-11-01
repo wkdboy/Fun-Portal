@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.5.0",
+    "date": "2026-11-01",
+    "notes": [
+      "New game: Shopping list. Fill the basket to match the list. Level 1 find the things, level 2 count how many of each, level 3 add up the prices in pence.",
+      "Times tables icon now shows a sum (2 × 3 = 6) instead of a cross."
+    ]
+  },
+  {
     "version": "0.4.1",
     "date": "2026-11-01",
     "notes": [

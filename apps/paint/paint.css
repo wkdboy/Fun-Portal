@@ -17,8 +17,8 @@
 .pt-pal { display: grid; grid-template-columns: repeat(2, 64px); gap: 12px; }
 .pt-sw { width: 64px; height: 64px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 0 0 3px #cfc8ee; cursor: pointer; }
 .pt-sw.on { box-shadow: 0 0 0 7px var(--ink); }
-.pt-wrap { flex: 1; min-width: 0; height: calc(100vh - 150px); overflow: hidden; }
-.pt-canvas { display: block; background: #fff; border-radius: 16px; box-shadow: 0 6px 0 rgba(0, 0, 0, .12); touch-action: none; cursor: crosshair; }
+.pt-wrap { position: relative; flex: 1; min-width: 0; height: calc(100vh - 150px); overflow: hidden; }
+.pt-canvas { display: block; background: #fff; border-radius: 16px; box-shadow: 0 6px 0 rgba(0, 0, 0, .12); touch-action: none; cursor: none; }
 .pt-tools { display: grid; grid-template-columns: repeat(2, 64px); gap: 12px; }
 .pt-tool { min-width: 64px; width: 64px; height: 64px; min-height: 64px; padding: 0; font-size: 30px; background: #8d88a8; }
 .pt-tool.green { background: var(--green); }
@@ -27,3 +27,5 @@
 .pt-tool.sel { outline: 6px solid var(--ink); outline-offset: 2px; }
 .pt-dot { display: inline-block; border-radius: 50%; background: #fff; max-width: 52px; max-height: 52px; }
 .pt-status { margin-top: 10px; font-weight: 800; color: var(--green); min-height: 30px; }
+.pt-cursor { position: absolute; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 2px #000, inset 0 0 0 1px #000; pointer-events: none; z-index: 5; }
+.pt-cursor::after { content: ''; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px; border-radius: 50%; background: #000; box-shadow: 0 0 0 1px #fff; }

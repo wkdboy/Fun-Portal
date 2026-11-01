@@ -33,10 +33,16 @@ export async function renderEditor(root, nav, id) {
   const rubber = el('button', { class: 'btn pt-tool', 'aria-label': 'Rubber', onclick: () => { erasing = !erasing; refresh(); } }, '🧽');
   const tool = (label, aria, fn, cls = '') => el('button', { class: 'btn pt-tool ' + cls, 'aria-label': aria, onclick: fn }, label);
 
+  let cursor; // ring that shows where (and how big) the brush is, visible on any colour
   function refresh() {
     swatches.forEach((b, i) => b.classList.toggle('on', !erasing && COLOURS[i] === colour));
     sizeBtns.forEach((b, i) => b.classList.toggle('sel', SIZES[i] === size));
     rubber.classList.toggle('sel', erasing);
+    if (cursor) {
+      const d = Math.max(16, erasing ? size * 1.6 : size);
+      cursor.style.width = cursor.style.height = d + 'px';
+      cursor.style.background = erasing ? 'rgba(255,255,255,.35)' : colour + '99';
+    }
   }
 
   // Build the canvas after the layout exists, so it can match the space available.
@@ -82,7 +88,18 @@ export async function renderEditor(root, nav, id) {
   ctx.fillRect(0, 0, W, H);
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
-  wrap.append(canvas);
+  cursor = el('div', { class: 'pt-cursor', 'aria-hidden': 'true' });
+  cursor.hidden = true;
+  wrap.append(canvas, cursor);
+  refresh();
+  canvas.addEventListener('pointermove', (e) => {
+    if (e.pointerType === 'touch') { cursor.hidden = true; return; }
+    const r = wrap.getBoundingClientRect();
+    cursor.hidden = false;
+    cursor.style.left = e.clientX - r.left + 'px';
+    cursor.style.top = e.clientY - r.top + 'px';
+  });
+  canvas.addEventListener('pointerleave', () => { cursor.hidden = true; });
 
   if (id) {
     const rec = await get('drawings', id);

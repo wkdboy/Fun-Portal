@@ -1,5 +1,12 @@
 [
   {
+    "version": "0.3.1",
+    "date": "2026-11-01",
+    "notes": [
+      "Paint: the pointer is now a clear ring (white with a black edge) showing where and how big the brush is, so it can be seen on any colour."
+    ]
+  },
+  {
     "version": "0.3.0",
     "date": "2026-11-01",
     "notes": [

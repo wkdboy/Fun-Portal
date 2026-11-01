@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.6.0",
+    "date": "2026-11-01",
+    "notes": [
+      "Paint: Colouring in. Choose from 16 outline pictures and colour them with the paint bucket (fills a whole area) or the brush. Coloured pictures save to the gallery and can be reopened to carry on.",
+      "Two more colours: white and skin."
+    ]
+  },
+  {
     "version": "0.5.0",
     "date": "2026-11-01",
     "notes": [

@@ -7,6 +7,7 @@ export async function renderGallery(root, nav) {
   const urls = [];
   const tiles = [
     el('button', { class: 'pt-new', onclick: () => nav.edit(null) }, el('span', { class: 'pt-plus' }, '➕'), 'New picture'),
+    el('button', { class: 'pt-new', onclick: () => nav.colouring() }, el('span', { class: 'pt-plus' }, '🖍️'), 'Colouring in'),
   ];
   for (const p of pics) {
     const url = URL.createObjectURL(p.png);

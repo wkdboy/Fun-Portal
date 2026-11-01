@@ -1,7 +1,8 @@
-// Paint: a gallery of saved pictures and a free-drawing editor.
+// Paint: a gallery of saved pictures, a free-drawing editor and colouring-in pages.
 import { loadCss } from '../../shared/dom.js';
 import { renderGallery } from './gallery.js';
 import { renderEditor } from './editor.js';
+import { renderColouring } from './colouring.js';
 
 export function mount(root) {
   loadCss(new URL('./paint.css', import.meta.url));
@@ -13,7 +14,8 @@ export function mount(root) {
   };
   const nav = {
     gallery: () => show((r) => renderGallery(r, nav)),
-    edit: (id) => show((r) => renderEditor(r, nav, id)),
+    edit: (id, page) => show((r) => renderEditor(r, nav, id, page)),
+    colouring: () => show((r) => renderColouring(r, nav)),
   };
   nav.gallery();
   return () => stop?.();

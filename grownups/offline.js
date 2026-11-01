@@ -23,6 +23,8 @@ export async function render(root, back) {
       el('p', { class: 'muted' }, `Version ${manifest.appVersion} (build ${manifest.version})`),
       el('p', { class: 'muted' }, navigator.serviceWorker?.controller ? 'Offline helper: running' : 'Offline helper: not running yet (reload once)'),
     );
+    const reg = await navigator.serviceWorker?.getRegistration();
+    if (reg?.waiting) add(out, el('p', { class: 'card', style: 'background:#fff3b8' }, '🔄 A new version is ready. Close the app completely and open it again to use it.'));
     const log = await (await fetch('changelog.json')).json();
     add(out,
       el('h2', {}, 'Version log'),

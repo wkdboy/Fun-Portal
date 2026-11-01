@@ -2,6 +2,7 @@
 (a hash of their contents). Run after ANY change to site files:  python tools/gen-precache.py"""
 import hashlib
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -27,4 +28,6 @@ app_version = log[0]["version"]  # newest entry is first; add one to changelog.j
 all_files = ["./"] + files + ["precache.json"]
 out = {"version": version, "appVersion": app_version, "files": all_files}
 (ROOT / "precache.json").write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
+sw = ROOT / "sw.js"
+sw.write_text(re.sub(r"const BUILD = '[^']*';", f"const BUILD = '{version}';", sw.read_text(encoding="utf-8")), encoding="utf-8")
 print(f"precache.json: {len(all_files)} files, app v{app_version}, build {version}")

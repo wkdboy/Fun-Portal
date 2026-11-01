@@ -1,6 +1,9 @@
 // Service worker: precaches every file listed in precache.json (see tools/gen-precache.py).
 // A new version installs in the background and only takes over once all windows are closed,
 // so an update never changes the app mid-session.
+// BUILD is rewritten by tools/gen-precache.py. It makes this file's bytes change on every release,
+// which is how the browser notices there is a new version to install.
+const BUILD = 'd08ba84bef';
 const LIST = 'precache.json';
 const PREFIX = 'fun-portal-';
 

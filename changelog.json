@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.3.2",
+    "date": "2026-11-01",
+    "notes": [
+      "Fixed: new versions now reach the installed app (before, the offline helper never noticed an update, so old screens could keep showing).",
+      "Offline check now says when a new version is waiting and the app needs closing and reopening."
+    ]
+  },
+  {
     "version": "0.3.1",
     "date": "2026-11-01",
     "notes": [

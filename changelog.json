@@ -1,5 +1,19 @@
 [
   {
+    "version": "0.10.0",
+    "date": "2026-11-01",
+    "notes": [
+      "New app: Times tables flash cards. Pick a table (2 to 12) or a mix, tap the card to see the answer, then tick or cross. Cards she didn't know come back more often."
+    ]
+  },
+  {
+    "version": "0.9.1",
+    "date": "2026-11-01",
+    "notes": [
+      "Write: added a clear button (with a tick/cross check) to rub out all the writing."
+    ]
+  },
+  {
     "version": "0.9.0",
     "date": "2026-11-01",
     "notes": [

@@ -14,3 +14,4 @@
   box-shadow: 0 6px 0 rgba(0, 0, 0, .08);
 }
 .te-text:focus { outline: 6px solid var(--blue); }
+.te-size.pink { background: var(--pink); font-size: 30px; }

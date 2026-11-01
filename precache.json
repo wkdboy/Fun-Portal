@@ -1,6 +1,6 @@
 {
-  "version": "41aa196f7b",
-  "appVersion": "0.9.0",
+  "version": "23eab9216d",
+  "appVersion": "0.10.0",
   "files": [
     "./",
     "apps/games/ai.js",
@@ -50,6 +50,9 @@
     "apps/phonics/words.js",
     "apps/text-editor/editor.css",
     "apps/text-editor/main.js",
+    "apps/times-tables/cards.js",
+    "apps/times-tables/main.js",
+    "apps/times-tables/times-tables.css",
     "apps/tracing/guides.js",
     "apps/tracing/ink.js",
     "apps/tracing/main.js",

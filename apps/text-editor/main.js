@@ -1,6 +1,7 @@
 // Write: one auto-saved note. Text size and colour apply to the whole note.
 import { el, add, loadCss } from '../../shared/dom.js';
 import { get, put } from '../../shared/storage.js';
+import { confirmPicture } from '../../shared/confirm.js';
 
 const SIZES = [28, 44, 64, 96];
 const COLOURS = ['#2b2250', '#e63946', '#ff9f1c', '#c99700', '#2ec27e', '#1b7f4b', '#2f9bff', '#2f4bff', '#8e5cf6', '#ff5fa2'];
@@ -32,6 +33,17 @@ export async function mount(root) {
     onclick: () => { colour = c; apply(); later(); },
   }));
 
+  const clear = el('button', {
+    class: 'btn pink te-size',
+    'aria-label': 'Clear all writing',
+    onclick: async () => {
+      if (!ta.value || !(await confirmPicture('🗑️', 'Rub out all the writing?'))) return;
+      ta.value = '';
+      save();
+      ta.focus();
+    },
+  }, '🗑️');
+
   function apply() {
     ta.style.fontSize = size + 'px';
     ta.style.color = colour;
@@ -39,7 +51,7 @@ export async function mount(root) {
     swatches.forEach((b, i) => b.classList.toggle('on', COLOURS[i] === colour));
   }
 
-  add(root, el('div', { class: 'te-bar' }, el('div', { class: 'row' }, sizeBtns), el('div', { class: 'row' }, swatches)), ta);
+  add(root, el('div', { class: 'te-bar' }, el('div', { class: 'row' }, sizeBtns), el('div', { class: 'row' }, swatches), clear), ta);
   apply();
   ta.focus();
   return () => { clearTimeout(timer); save(); };

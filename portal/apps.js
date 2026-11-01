@@ -3,7 +3,7 @@
 export const APPS = [
   { id: 'phonics', label: 'Phonics', pic: '🔤', color: '#ff5fa2', module: '../apps/phonics/main.js' },
   { id: 'numbers', label: 'Numbers', pic: '🔢', color: '#2f9bff', module: '../apps/numbers/main.js' },
-  { id: 'times-tables', label: 'Times tables', pic: '✖️', color: '#ff9f1c', module: null },
+  { id: 'times-tables', label: 'Times tables', pic: '✖️', color: '#ff9f1c', module: '../apps/times-tables/main.js' },
   { id: 'text-editor', label: 'Write', pic: '📝', color: '#2ec27e', module: '../apps/text-editor/main.js' },
   { id: 'tracing', label: 'Tracing', pic: '✏️', color: '#14a89a', module: '../apps/tracing/main.js' },
   { id: 'paint', label: 'Paint', pic: '🎨', color: '#8e5cf6', module: '../apps/paint/main.js' },

@@ -1,5 +1,12 @@
 [
   {
+    "version": "0.11.0",
+    "date": "2026-11-04",
+    "notes": [
+      "New app: Stories. Six picture books from Book Dash (CC BY 4.0) with a page-turning reader (tap the sides, arrow buttons or keys) and a credits page for each. Works offline."
+    ]
+  },
+  {
     "version": "0.10.1",
     "date": "2026-11-01",
     "notes": [

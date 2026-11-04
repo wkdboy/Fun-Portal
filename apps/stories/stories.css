@@ -1,0 +1,23 @@
+.st-shelf { grid-template-columns: repeat(3, 1fr); max-width: 1200px; gap: 28px; }
+.st-book {
+  display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px; border: 0; border-radius: 24px;
+  background: #fff; color: var(--ink); font: inherit; font-size: 26px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
+}
+.st-book:active { transform: translateY(4px); }
+.st-book img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 12px; background: #f4f1ff; }
+
+.st-stage { position: relative; height: calc(100vh - 170px); min-height: 260px; border-radius: 20px; background: #fff; overflow: hidden; box-shadow: 0 6px 0 rgba(0, 0, 0, .1); }
+.st-page { width: 100%; height: 100%; object-fit: contain; display: block; user-select: none; }
+.st-zone { position: absolute; top: 0; bottom: 0; width: 30%; border: 0; background: transparent; cursor: pointer; }
+.st-zone.l { left: 0; }
+.st-zone.r { right: 0; }
+.st-bar { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 14px; }
+.st-nav { min-width: 120px; height: 68px; min-height: 0; font-size: 34px; padding: 0; }
+.st-nav:disabled { opacity: .35; }
+.st-count { min-width: 110px; text-align: center; font-size: 28px; font-weight: 800; }
+.st-end { max-width: 760px; margin: 10px auto; text-align: center; }
+.st-the-end { font-size: 72px; font-weight: 800; margin-bottom: 20px; }
+.st-credits { margin-top: 28px; padding: 20px 26px; border-radius: 20px; background: #fff; text-align: left; font-size: 24px; }
+.st-credits h2 { margin: 0 0 8px; }
+.st-credits p { margin: 6px 0; }
+.st-small { font-size: 18px; color: #6a6490; }

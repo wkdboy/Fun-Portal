@@ -15,6 +15,9 @@ BOOKS = {
     'little-goat': ('Little Goat', [('Written by', 'Mirna Lawrence'), ('Illustrated by', 'Nicola Anne Smith'), ('Designed by', 'Tiffany Mac Sherry'), ('Edited by', 'Nabeela Kalla')], 2016),
     'how-do-you-sleep': ('How do you sleep?', [('Written and edited by', 'Diane Awerbuck'), ('Illustrated by', 'Alex Latimer'), ('Designed by', 'Georgia Demertzis')], 2022),
     'lions-are-always-brave': ('Lions Are Always Brave', [('Written by', 'Daniel Browde'), ('Illustrated by', 'Carlos Amato'), ('Designed by', 'Thabang Tlhako'), ('Edited by', 'Alison Ziki')], 2018),
+    'sleepy-mr-sloth': ('Sleepy Mr Sloth', [('Written by', 'Paul Kennedy'), ('Illustrated by', 'Graham Paterson'), ('Designed by', 'Nick Mulgrew'), ('Edited by', 'Arthur Attwell and Tarryn-Anne Anderson')], 2014),
+    'small-birds-big-adventure': ("Small Bird's Big Adventure", [('Written by', 'Nick Mulgrew'), ('Illustrated by', 'Wesley van Eeden'), ('Designed by', 'Jennifer Jacobs'), ('Edited by', 'Bongani Kona')], 2016),
+    'monkey-business': ('Monkey business', [('Written by', 'Magriet Kruger'), ('Illustrated by', 'Brice Reignier'), ('Designed by', 'Wilna Combrinck'), ('Edited by', 'Katie Huston')], 2023),
     'amazing-daisy': ('Amazing Daisy!', [('Written by', 'Nozizwe Herero'), ('Illustrated by', 'Siya Masuku'), ('Designed by', 'Leona Ingram'), ('Edited by', 'Ester Levinson and Melissa Davidson')], 2015),
 }
 

@@ -118,6 +118,81 @@ export const BOOKS = [
     "url": "https://bookdash.org/books/lions-are-always-brave/"
   },
   {
+    "id": "sleepy-mr-sloth",
+    "title": "Sleepy Mr Sloth",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Paul Kennedy"
+      ],
+      [
+        "Illustrated by",
+        "Graham Paterson"
+      ],
+      [
+        "Designed by",
+        "Nick Mulgrew"
+      ],
+      [
+        "Edited by",
+        "Arthur Attwell and Tarryn-Anne Anderson"
+      ]
+    ],
+    "year": 2014,
+    "url": "https://bookdash.org/books/sleepy-mr-sloth/"
+  },
+  {
+    "id": "small-birds-big-adventure",
+    "title": "Small Bird's Big Adventure",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Nick Mulgrew"
+      ],
+      [
+        "Illustrated by",
+        "Wesley van Eeden"
+      ],
+      [
+        "Designed by",
+        "Jennifer Jacobs"
+      ],
+      [
+        "Edited by",
+        "Bongani Kona"
+      ]
+    ],
+    "year": 2016,
+    "url": "https://bookdash.org/books/small-birds-big-adventure/"
+  },
+  {
+    "id": "monkey-business",
+    "title": "Monkey business",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Magriet Kruger"
+      ],
+      [
+        "Illustrated by",
+        "Brice Reignier"
+      ],
+      [
+        "Designed by",
+        "Wilna Combrinck"
+      ],
+      [
+        "Edited by",
+        "Katie Huston"
+      ]
+    ],
+    "year": 2023,
+    "url": "https://bookdash.org/books/monkey-business/"
+  },
+  {
     "id": "amazing-daisy",
     "title": "Amazing Daisy!",
     "pages": 12,

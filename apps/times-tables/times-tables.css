@@ -5,7 +5,7 @@
 }
 .tt-tile.mix { font-size: 44px; }
 .tt-tile:active { transform: translateY(4px); }
-.tt-stage { display: flex; gap: 40px; align-items: center; justify-content: center; margin-top: 10px; }
+.tt-stage { display: flex; gap: 40px; align-items: center; justify-content: center; min-height: calc(100vh - 260px); }
 .tt-card {
   width: 640px; min-height: 380px; padding: 20px; border-radius: 36px; background: #fff; color: var(--ink);
   box-shadow: 0 8px 0 rgba(0, 0, 0, .14); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;

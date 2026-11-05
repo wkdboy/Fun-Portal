@@ -1,10 +1,15 @@
-.st-shelf { grid-template-columns: repeat(3, 1fr); max-width: 1200px; gap: 28px; }
+.st-shelf { --cols: 3; max-width: 1200px; margin: 0 auto; }
 .st-book {
   display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px; border: 0; border-radius: 24px;
   background: #fff; color: var(--ink); font: inherit; font-size: 26px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 0 rgba(0, 0, 0, .12);
 }
 .st-book:active { transform: translateY(4px); }
-.st-book img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 12px; background: #f4f1ff; }
+.st-cover { position: relative; display: block; width: 100%; }
+.st-book img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 12px; background: #f4f1ff; display: block; }
+.st-together {
+  position: absolute; right: 8px; bottom: 8px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, .8); font-size: 22px; line-height: 1; opacity: .85; box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+}
 
 .st-stage { position: relative; height: calc(100vh - 170px); min-height: 260px; border-radius: 20px; background: #fff; overflow: hidden; box-shadow: 0 6px 0 rgba(0, 0, 0, .1); }
 .st-page { width: 100%; height: 100%; object-fit: contain; display: block; user-select: none; }

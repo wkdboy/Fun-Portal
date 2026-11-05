@@ -1,4 +1,4 @@
-.sh-levels { grid-template-columns: repeat(3, 1fr); max-width: 1000px; margin: 0 auto; }
+.sh-levels { --cols: 3; max-width: 1000px; margin: 0 auto; }
 .sh-wrap { display: flex; gap: 24px; justify-content: center; align-items: flex-start; }
 .sh-list { width: 290px; }
 .sh-list h2, .sh-basket h2 { margin: 0 0 10px; font-size: 28px; }

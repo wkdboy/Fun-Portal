@@ -19,7 +19,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2014,
-    "url": "https://bookdash.org/books/come-back-cat/"
+    "url": "https://bookdash.org/books/come-back-cat/",
+    "together": false
   },
   {
     "id": "clever-pig",
@@ -44,7 +45,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2016,
-    "url": "https://bookdash.org/books/clever-pig/"
+    "url": "https://bookdash.org/books/clever-pig/",
+    "together": false
   },
   {
     "id": "little-goat",
@@ -69,7 +71,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2016,
-    "url": "https://bookdash.org/books/little-goat/"
+    "url": "https://bookdash.org/books/little-goat/",
+    "together": true
   },
   {
     "id": "how-do-you-sleep",
@@ -90,7 +93,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2022,
-    "url": "https://bookdash.org/books/how-do-you-sleep/"
+    "url": "https://bookdash.org/books/how-do-you-sleep/",
+    "together": false
   },
   {
     "id": "lions-are-always-brave",
@@ -115,7 +119,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2018,
-    "url": "https://bookdash.org/books/lions-are-always-brave/"
+    "url": "https://bookdash.org/books/lions-are-always-brave/",
+    "together": false
   },
   {
     "id": "sleepy-mr-sloth",
@@ -140,7 +145,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2014,
-    "url": "https://bookdash.org/books/sleepy-mr-sloth/"
+    "url": "https://bookdash.org/books/sleepy-mr-sloth/",
+    "together": false
   },
   {
     "id": "small-birds-big-adventure",
@@ -165,7 +171,8 @@ export const BOOKS = [
       ]
     ],
     "year": 2016,
-    "url": "https://bookdash.org/books/small-birds-big-adventure/"
+    "url": "https://bookdash.org/books/small-birds-big-adventure/",
+    "together": true
   },
   {
     "id": "monkey-business",
@@ -190,7 +197,156 @@ export const BOOKS = [
       ]
     ],
     "year": 2023,
-    "url": "https://bookdash.org/books/monkey-business/"
+    "url": "https://bookdash.org/books/monkey-business/",
+    "together": true
+  },
+  {
+    "id": "the-monster-must-go",
+    "title": "The Monster Must Go!",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Murray Hunter"
+      ],
+      [
+        "Illustrated by",
+        "Nicola Anne Smith"
+      ],
+      [
+        "Designed by",
+        "Katinka Joubert"
+      ],
+      [
+        "Edited by",
+        "Ester Levinrad"
+      ]
+    ],
+    "year": 2023,
+    "url": "https://bookdash.org/books/the-monster-must-go/",
+    "together": false
+  },
+  {
+    "id": "the-lazy-ant",
+    "title": "The Lazy Ant",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Cebo Solombela"
+      ],
+      [
+        "Illustrated by",
+        "Unathi Dyani"
+      ],
+      [
+        "Designed by",
+        "Senzo Xulu"
+      ],
+      [
+        "Edited by",
+        "Linda Nelani"
+      ]
+    ],
+    "year": 2016,
+    "url": "https://bookdash.org/books/the-lazy-ant/",
+    "together": true
+  },
+  {
+    "id": "the-lion-who-wouldnt-try",
+    "title": "The Lion Who Wouldn't Try",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Liza Esterhuyse"
+      ],
+      [
+        "Illustrated by",
+        "Andre Kieswetter"
+      ],
+      [
+        "Designed by",
+        "Nick Mulgrew"
+      ]
+    ],
+    "year": 2016,
+    "url": "https://bookdash.org/books/the-lion-who-wouldnt-try/",
+    "together": false
+  },
+  {
+    "id": "the-best-nest",
+    "title": "The Best Nest",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Crystal Warren"
+      ],
+      [
+        "Illustrated by",
+        "Megan Vermaak"
+      ],
+      [
+        "Designed by",
+        "Ashlyn Atkinson"
+      ],
+      [
+        "Edited by",
+        "David Mann"
+      ]
+    ],
+    "year": 2021,
+    "url": "https://bookdash.org/books/the-best-nest/",
+    "together": false
+  },
+  {
+    "id": "woof-woof",
+    "title": "Woof-woof!",
+    "pages": 12,
+    "credits": [
+      [
+        "Written by",
+        "Sindiwe Magona"
+      ],
+      [
+        "Illustrated by",
+        "Nicolene Louw"
+      ],
+      [
+        "Designed by",
+        "Christelle Grobler"
+      ],
+      [
+        "Edited by",
+        "Glynis Lloyd"
+      ]
+    ],
+    "year": 2019,
+    "url": "https://bookdash.org/books/woof-woof/",
+    "together": false
+  },
+  {
+    "id": "tortoise-finds-his-home",
+    "title": "Tortoise finds his home",
+    "pages": 12,
+    "credits": [
+      [
+        "Written and translated by",
+        "Maya Fowler"
+      ],
+      [
+        "Illustrated by",
+        "Katrin Coetzer"
+      ],
+      [
+        "Designed by",
+        "Damian Gibbs"
+      ]
+    ],
+    "year": 2014,
+    "url": "https://bookdash.org/books/tortoise-finds-his-home/",
+    "together": true
   },
   {
     "id": "amazing-daisy",
@@ -215,6 +371,7 @@ export const BOOKS = [
       ]
     ],
     "year": 2015,
-    "url": "https://bookdash.org/books/amazing-daisy/"
+    "url": "https://bookdash.org/books/amazing-daisy/",
+    "together": true
   }
 ];

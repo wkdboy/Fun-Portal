@@ -1,4 +1,4 @@
-.tt-menu { grid-template-columns: repeat(4, 1fr); max-width: 1100px; gap: 22px; }
+.tt-menu { --cols: 4; --gap: 22px; max-width: 1100px; margin: 0 auto; }
 .tt-tile {
   min-height: 150px; border: 0; border-radius: 28px; color: #fff; font: inherit; font-size: 56px; font-weight: 800;
   cursor: pointer; box-shadow: 0 6px 0 rgba(0, 0, 0, .18);

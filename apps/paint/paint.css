@@ -1,4 +1,4 @@
-.pt-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; max-width: 1300px; }
+.pt-grid { --cols: 4; max-width: 1300px; margin: 0 auto; }
 .pt-new {
   aspect-ratio: 4 / 3; border: 6px dashed #b7aee6; border-radius: 20px; background: #fff; color: var(--ink);
   font: inherit; font-size: 28px; font-weight: 800; cursor: pointer;

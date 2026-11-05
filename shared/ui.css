@@ -39,6 +39,12 @@ h2 { font-size: 30px; margin: 24px 0 12px; }
 
 .card { background: var(--card); border-radius: var(--radius); padding: 28px; box-shadow: 0 6px 0 rgba(0, 0, 0, .08); }
 .grid { display: grid; gap: 28px; }
+/* Menu grids: rows wrap and stay centred, so a short last row sits in the middle. Set --cols (and --gap) on the grid. */
+.tiles, .nm-menu, .tt-menu, .st-shelf, .ph-menu, .g-tiles, .sh-levels, .pt-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--gap, 28px); }
+.tiles > *, .nm-menu > *, .tt-menu > *, .st-shelf > *, .ph-menu > *, .g-tiles > *, .sh-levels > *, .pt-grid > * {
+  flex: 0 0 calc((100% - (var(--cols, 4) - 1) * var(--gap, 28px)) / var(--cols, 4)); min-width: 0;
+}
+h1:has(+ .tiles), h1:has(+ .nm-menu), h1:has(+ .tt-menu), h1:has(+ .st-shelf), h1:has(+ .ph-menu), h1:has(+ .g-tiles), h1:has(+ .sh-levels), h1:has(+ .pt-grid) { text-align: center; }
 
 .corner-btn {
   position: fixed; top: 18px; z-index: 50; width: 72px; height: 72px; font-size: 38px;
